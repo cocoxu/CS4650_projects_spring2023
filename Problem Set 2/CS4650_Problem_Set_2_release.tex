@@ -176,6 +176,9 @@ $\boldsymbol{f}_{i} = \sigma(4 + 4 + 0) = 1.0$ \\
 \indent $\boldsymbol{o}_{i} = \sigma(2 + 2 - 1) = 1.0$\\
 \indent $\boldsymbol{h}_{i} = 1.0 \odot \text{tanh}([1.76, 1.0, -5.0]^T) = \mathbf{[0.94, 0.76, -1.0]^T}$\\
 
+\textbf{Note that this is just a toy example of an LSTM layer where the gate values are scalars. In a real LSTM such as the one in PyTorch, the gate values will be vectors with some hidden layer dimensionality.}
+
+
 The gates of this LSTM do not restrict the flow of any information. To effectively turn this LSTM into an Elman RNN at the current timestep, i.e., include \textbf{only} information from the current input and prior hidden state and \textbf{no} information from the prior memory cell in $\boldsymbol{h}_{i}$, describe the values that you would need to set the gates $\boldsymbol{f}_{i}, \boldsymbol{i}_{i}$ and $\boldsymbol{o}_{i}$ equal to. Only the values for these gates are necessary, do not change the equations for the update.
 
 
@@ -216,7 +219,7 @@ Consider the following bigram language model. The bigram probabilities are given
 \end{table}
 
 \begin{enumerate}
-    \item Given a prefix string ``$\langle s\rangle\;I\;know$'', what are the next $3$ possible tokens. Run beam search with width $k=2$ and generate the next $3$ tokens. 
+    \item (\textbf{3 pts}) Given a prefix string ``$\langle s\rangle\;I\;know$'', what are the next $3$ possible tokens. Run beam search with width $k=2$ and generate the next $3$ tokens. 
     
     Assume $P(\langle s  \rangle\;I\;know) = 1$. Make sure you show the probabilities for each step. Also, show the word sequences in the beam at the end of each step.
     
@@ -232,13 +235,13 @@ Consider the following bigram language model. The bigram probabilities are given
     Once again, consider the bigram language model in Table \ref{tab:bigram_prob}.
     
     \begin{enumerate}
-        \item Given the prefix string ``$\langle s\rangle\;I\;know$'', run the top-k sampling approach for the next 3 tokens.  Let $S$ be the set of output sequences that this approach could possibly generate at the end of 3 steps. What is the size of $S$? Assume $k = 2$ and $P(\langle s  \rangle\;I\;know) = 1$. You can just report the number.
+        \item (\textbf{1 pt}) Given the prefix string ``$\langle s\rangle\;I\;know$'', run the top-k sampling approach for the next 3 tokens.  Let $S$ be the set of output sequences that this approach could possibly generate at the end of 3 steps. What is the size of $S$? Assume $k = 2$ and $P(\langle s  \rangle\;I\;know) = 1$. You can just report the number.
         
         
-        \item What is the sequence with maximum probability in $S$? Report the sequence and the probability of the sequence. 
+        \item (\textbf{1 pt}) What is the sequence with maximum probability in $S$? Report the sequence and the probability of the sequence. 
         
         
-        \item What is the sequence with  minimum probability in $S$? Report the sequence and the probability of the sequence.
+        \item (\textbf{1 pt}) What is the sequence with  minimum probability in $S$? Report the sequence and the probability of the sequence.
         
         
     \end{enumerate}
@@ -246,15 +249,15 @@ Consider the following bigram language model. The bigram probabilities are given
     \item Let's say we are decoding a sentence of length $T$ using a language model with vocabulary size $V$. Report the time complexity in the big $O$ notation when the sentence is decoded using the following strategies:
 
     \begin{enumerate}
-    \item Greedy search, where we store only the topmost sequence at each time step. 
+    \item (\textbf{1 pt}) Greedy search, where we store only the topmost sequence at each time step. 
     
 
     
-    \item Beam search of width $k$, where we store the top-$k$ sequences at each time step: 
+    \item (\textbf{1 pt}) Beam search of width $k$, where we store the top-$k$ sequences at each time step: 
 
 
     
-    \item Exhaustive search, where we store all the sequences at each time step: 
+    \item (\textbf{1 pt}) Exhaustive search, where we store all the sequences at each time step: 
     
     
     \end{enumerate}
